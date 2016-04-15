@@ -2,7 +2,7 @@ mkdir todo3
 cd todo3
 npm init
 touch README.md
-npm install --save flux react react-dom react-router keymirror axios
+npm install --save flux react react-dom react-router keymirror axios css-loader style-loader file-loader url-loader
 npm install --save-dev webpack babel webpack-dev-server babel-loader babel-preset-react babel-preset-es2015 babel-preset-stage-1
 touch webpack.config.js
 echo 'module.exports = {
