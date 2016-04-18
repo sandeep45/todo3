@@ -35,7 +35,7 @@ touch dist/index.html
 cd src
 mkdir js
 cd js
-mkdir components constants dispatchers stores utils config
+mkdir actions components constants dispatchers stores utils config
 touch main.js
 touch config/routes.js
 touch utils/WebUtil.js
