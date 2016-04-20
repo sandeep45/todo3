@@ -68,11 +68,13 @@ register( function(action){
       NoteStore.emitChange();
       break;
 
-    case NoteConstants.NOTE_MOUSEOVERED:
-      console.log("NoteStore.js - NOTE_MOUSEOVERED action with: ", action.noteId);
-      _mouseOveredNoteId = action.noteId;
+    case NoteConstants.NOTE_UPDATE:
+      console.log("NoteStore.js - NOTE_UPDATE action with: ", action.noteId);
+      noteIndex = _notes.findIndex( (note) => note.id == action.noteId )
+      _notes[noteIndex].comment = action.comment;
       NoteStore.emitChange();
       break;
+
 
     default:
       console.log(`NoteStore.js - Unknown Action ${action.actionType}`);

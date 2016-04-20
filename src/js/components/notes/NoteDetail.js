@@ -21,7 +21,7 @@ export default class NoteDetail extends Component {
     this.state = {
       noteId: noteId
     };
-    NoteActions.showNote(noteId);
+    NoteActions.getNote(noteId);
     this.state.note = getStateFromStore.call(this).note;
   }
 
@@ -37,13 +37,13 @@ export default class NoteDetail extends Component {
     console.log("updating props")
     let noteId = null;
 
-    noteId = this.props.params.noteId;
+    noteId = newProps.params.noteId;
 
     this.setState({
       noteId: noteId
     });
 
-    NoteActions.showNote(noteId);
+    NoteActions.getNote(noteId);
   }
 
   _onChange = () => {

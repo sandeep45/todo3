@@ -21,11 +21,11 @@ const NoteActions = {
         (response) => {
           console.error(`todo3 backend return failed`, response);
         });
-    },2000)
+    },1)
 
   },
 
-  showNote(noteId){
+  getNote(noteId){
     console.log("show note");
 
     window.setTimeout(() => {
@@ -43,7 +43,7 @@ const NoteActions = {
           console.error(`todo3 backend return failed`, response);
         }
       )
-    }, 3000);
+    }, 1);
 
   },
 
@@ -64,7 +64,7 @@ const NoteActions = {
           console.error(`todo3 backend return failed`, response);
         }
       )
-    }, 500);
+    }, 1);
   },
 
   deleteNote(noteId){
@@ -85,7 +85,29 @@ const NoteActions = {
           console.error(`todo3 backend return failed`, response);
         }
       )
-    }, 500);
+    }, 1);
+  },
+
+  updateNote(noteId, comment){
+    console.log("delete note");
+
+    window.setTimeout(() => {
+      const notePromise = WebUtil.updateNote(noteId, comment);
+
+      notePromise.then(
+        (response) => {
+          console.log(`todo3 backend returned successfully`, response);
+          dispatch({
+            actionType: NoteConstants.NOTE_UPDATE,
+            noteId: noteId,
+            comment: comment
+          });
+        },
+        (response) => {
+          console.error(`todo3 backend return failed`, response);
+        }
+      )
+    }, 1);
   }
 
 };

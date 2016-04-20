@@ -56,7 +56,13 @@ export default class NoteList extends Component {
                   <li className="list-group-item" key={note.id}>
                     {note.id} - {note.comment} - <Link to={`/notes/${note.id}`} className="">
                       See Detail
-                    </Link> - <a href="javascript:void(0);" className="text-danger" onClick={this._destroy.bind(this, note.id)}>Destroy</a>
+                    </Link>
+                    -
+                    <a href="javascript:void(0);" className="text-danger"
+                      onClick={this._destroy.bind(this, note.id)}>Destroy</a>
+                    -
+                    <Link to={`/notes/${note.id}/edit`}>Edit</Link>
+
                   </li>
                 );
               })
