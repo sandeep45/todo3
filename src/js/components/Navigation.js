@@ -19,12 +19,12 @@ export default class Menu extends Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
               </button>
-              <Link className="navbar-brand" to="/">Todo3</Link>
+              <Link className="navbar-brand" activeClassName="active" to="/">Todo3</Link>
             </div>
             <div id="navbar" className="collapse navbar-collapse">
               <ul className="nav navbar-nav">
-                <li><Link to="/">Dashboard</Link></li>
-                <li><Link to="/notes">Notes</Link></li>
+                <li><Link to="/" activeClassName="active">Dashboard</Link></li>
+                <li><Link to="/notes" activeClassName="active">Notes</Link></li>
               </ul>
             </div>
           </div>

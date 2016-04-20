@@ -3,7 +3,6 @@ import {Dispatcher} from 'flux';
 const myDispatcher = new Dispatcher();
 
 export function register( callback ) {
-  console.log(myDispatcher.register);
   return myDispatcher.register( callback );
 }
 

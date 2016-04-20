@@ -1,21 +1,91 @@
 import {dispatch} from '../dispatchers/AppDispatcher.js';
 import NoteConstants from '../constants/NoteConstants.js';
+import WebUtil from '../utils/WebUtil.js'
 
 const NoteActions = {
 
-  showAllNotes(){
-    console.log("showAllNotes");
+  getAllNotes(){
+    console.log("getAllNotes");
 
-    var notesArray = [
-        {text: "Lorem ipsum Ad Excepteur labore aliqua exercitation veniam irure voluptate pariatur exercitation ullamco nulla proident.", id: 1,},
-        {text: "Lorem ipsum Sunt laboris voluptate.", id: 2 },
-        {text: "Lorem ipsum Sint sed culpa ex et laboris proident commodo id Ut laborum ad est ex non qui culpa et officia eiusmod adipisicing minim nulla commodo aliquip aute cupidatat et culpa elit sit minim quis nisi cillum sint.", id: 3}
-      ];
+    window.setTimeout(() => {
+      const notesPromise = WebUtil.getAllNotes();
 
-    dispatch({
-      actionType: NoteConstants.NOTE_INDEX,
-      notes: notesArray
-    })
+      notesPromise.then(
+        (response) => {
+          console.log(`todo3 backend returned successfully`, response);
+          dispatch({
+            actionType: NoteConstants.NOTE_INDEX,
+            notes: response.data
+          });
+        },
+        (response) => {
+          console.error(`todo3 backend return failed`, response);
+        });
+    },2000)
+
+  },
+
+  showNote(noteId){
+    console.log("show note");
+
+    window.setTimeout(() => {
+      const notePromise = WebUtil.getNote(noteId);
+
+      notePromise.then(
+        (response) => {
+          console.log(`todo3 backend returned successfully`, response);
+          dispatch({
+            actionType: NoteConstants.NOTE_SHOW,
+            note: response.data
+          });
+        },
+        (response) => {
+          console.error(`todo3 backend return failed`, response);
+        }
+      )
+    }, 3000);
+
+  },
+
+  createNote(comment){
+    console.log("create note: ", comment);
+
+    window.setTimeout(() => {
+      const notePromise = WebUtil.createNote(comment);
+      notePromise.then(
+        (response) => {
+          console.log(`todo3 backend returned successfully`, response);
+          dispatch({
+            actionType: NoteConstants.NOTE_CREATE,
+            note: response.data
+          });
+        },
+        (response) => {
+          console.error(`todo3 backend return failed`, response);
+        }
+      )
+    }, 500);
+  },
+
+  deleteNote(noteId){
+    console.log("delete note");
+
+    window.setTimeout(() => {
+      const notePromise = WebUtil.deleteNote(noteId);
+
+      notePromise.then(
+        (response) => {
+          console.log(`todo3 backend returned successfully`, response);
+          dispatch({
+            actionType: NoteConstants.NOTE_DELETE,
+            noteId: noteId
+          });
+        },
+        (response) => {
+          console.error(`todo3 backend return failed`, response);
+        }
+      )
+    }, 500);
   }
 
 };
