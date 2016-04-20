@@ -20,7 +20,7 @@ export default class NoteForm extends Component {
 
         <div className="form-group">
           <div className="col-sm-offset-2 col-sm-10">
-            <button type="submit" className="btn btn-default">Create Note</button>
+            <button type="submit" className="btn btn-default">Submit</button>
             &nbsp;
             <Link to="/notes" className="btn btn-default">Back to all Notes </Link>
           </div>
